@@ -1,54 +1,54 @@
-require_relative '../app/bank'
+require_relative '../../app/bank'
 
 describe ContaCorrente do
     
     describe 'Saque' do
         context 'quando valor é positivo' do
             before(:all) do
-                @conta = ContaCorrente.new(1000.00)
-                @conta.saca(200.00)
+                @cc = ContaCorrente.new(1000.00)
+                @cc.saca(200.00)
             end
             it 'então atualiza saldo' do
-                expect(@conta.saldo).to eql 800.00
+                expect(@cc.saldo).to eql 795.00
             end
         end
 
         context 'quando o saldo é zero' do
             before(:all) do
-                @conta = ContaCorrente.new(0.00)
-                @conta.saca(100.00)
+                @cc = ContaCorrente.new(0.00)
+                @cc.saca(100.00)
             end
             it 'então exibe mensagem' do
-                expect(@conta.mensagem).to eql 'Saldo insuficiente para saque'
+                expect(@cc.mensagem).to eql 'Saldo insuficiente para saque'
             end
             it 'E o saldo continua zerado' do
-                expect(@conta.saldo).to eql 0.00
+                expect(@cc.saldo).to eql 0.00
             end
         end
 
         context 'quando o saldo é insuficiente' do
             before(:all) do
-                @conta = ContaCorrente.new(0.00)
-                @conta.saca(100.00)
+                @cc = ContaCorrente.new(0.00)
+                @cc.saca(100.00)
             end
             it 'vejo mensagem' do
-                expect(@conta.mensagem).to eql 'Saldo insuficiente para saque'
+                expect(@cc.mensagem).to eql 'Saldo insuficiente para saque'
             end
             it 'meu saldo permanece zerado' do
-                expect(@conta.saldo).to eql 0.00
+                expect(@cc.saldo).to eql 0.00
             end
         end
 
         context 'quando ultrapassa o limite de saque' do
             before(:all) do
-                @conta = ContaCorrente.new(1000.00)
-                @conta.saca(701.00)
+                @cc = ContaCorrente.new(1000.00)
+                @cc.saca(701.00)
             end
             it 'então exibe mensagem' do
-                expect(@conta.mensagem).to eql 'Limite máximo é de R$700'
+                expect(@cc.mensagem).to eql 'Limite máximo é de R$700'
             end
             it 'E o saldo permanece' do
-                expect(@conta.saldo).to eql @conta.saldo
+                expect(@cc.saldo).to eql @cc.saldo
             end
         end
     end 

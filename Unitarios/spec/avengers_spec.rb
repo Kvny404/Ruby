@@ -54,6 +54,6 @@ describe AvengersHeadQuarter do
         avenger = 'Peter Parker'
 
         expect(avenger).to match(/Parker/)
-        expect(avenger).to not_match(/Keveny/)
+        expect(avenger).not_to match(/Keveny/)
     end 
 end
