@@ -1,4 +1,4 @@
-describe 'Caixa de seleção', :dropdown do # o valor :'xx' depois da vírgula é uma tag,  
+describe 'Caixa de opções', :dropdown do # o valor :'xx' depois da vírgula é uma tag,  
                                           # usada para executão apenas suites de teste ligadas a essa tag
  
     it 'item específico simples' do
